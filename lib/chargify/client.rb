@@ -197,7 +197,7 @@ module Chargify
       response = put("/subscriptions/#{subscription_id}/components/#{component_id}.json", 
                     :body => {:component => component})
       response[:success?] = response.code == 200
-      Hashie::Mash.new(response)
+      Hashie::Mash.new(response.parsed_response)
     end 
 
     alias update_metered_component  update_subscription_component_allocated_quantity
